@@ -1,17 +1,18 @@
 const http = require('http');
 
 const server = http.createServer((req, res) => {
- if(req.url === '/') {
+  if (req.url === '/') {
+    res.end('home page');
+  } else if (req.url === '/about') {
+    console.log("about page");
     
-
+    res.end('about page');
+  } else {
+    res.end('404 Not Found');
   }
-  
-  // res.write('Welcom to Node.js!')
-  // res.end()
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
 })
 
-server.listen(5000) 
+server.listen(5000, () => {
+  console.log('Server is running on port 5000...');
+})
 

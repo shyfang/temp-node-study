@@ -1,6 +1,7 @@
+const { createReadStream } = require('fs')
 
-const _ = require('lodash');
+const stream = createReadStream('./content/first.txt')
 
-const items = [1, [2, [3, [4],]]]
-const newItems = _.flattenDeep(items);
-console.log(newItems);
+stream.on('data', (chunk) => {
+  console.log(chunk.toString())
+})
